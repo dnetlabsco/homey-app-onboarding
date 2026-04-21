@@ -61,26 +61,26 @@ Install these **in this order**. If something breaks, ask before googling for an
    nvm use 22
    node --version   # should print v22.x
    ```
-2. **Docker Desktop** — only required for Python apps or Homey Cloud apps. Safe to skip if you're starting with Node.js.
+2. **Docker Desktop**
 3. **Homey CLI** — your daily driver:
    ```bash
    npm install -g homey
    homey --version
    ```
 4. **An Athom account** — sign up at https://my.homey.app.
-5. **A Homey (physical or virtual)** linked to your account. Start witth cloud only.
+5. **A Homey (physical or virtual)** linked to your account. Start with cloud only.
 6. **Git** + SSH key linked to GitHub.
-7. **VS Code** with the ESLint and Prettier extensions.
+7. **VS Code** with the ESLint and Prettier extensions. Optional: Homey extension
 
 ### Verify your setup
 
 You're ready when all of these succeed:
 
 - [ ] `node --version` prints `v22.x`
-- [ ] `homey --version` prints a version string
+- [ ] `homey --version` prints a version string >= 4.2.0
 - [ ] `homey login` succeeds (opens a browser, you log in)
 - [ ] `homey app create` scaffolds a new app without errors
-- [ ] `homey app run` on that scaffold shows the app on your Homey and streams logs
+- [ ] `homey app run` on that scaffold shows the app on your Homey and streams logs. (You'll need running docker engine on the background)
 
 ---
 
