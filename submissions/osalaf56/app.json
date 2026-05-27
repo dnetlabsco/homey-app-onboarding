@@ -1,0 +1,219 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "brandColor": "#4A90E2",
+  "id": "com.osman.weatherbuddy",
+  "version": "1.0.0",
+  "compatibility": ">=13.0.0",
+  "sdk": 3,
+  "runtime": "python",
+  "pythonVersion": "3.14",
+  "platforms": [
+    "cloud"
+  ],
+  "name": {
+    "en": "Weather Buddy"
+  },
+  "description": {
+    "en": "Adds support for MyBrand devices."
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Osman Allahverdi",
+    "email": "osmanallahverdi@athom.nl"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "weather changed"
+        },
+        "args": [
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "values": [
+              {
+                "id": "sunny",
+                "label": {
+                  "en": "sunny"
+                }
+              },
+              {
+                "id": "cloudy",
+                "label": {
+                  "en": "cloudy"
+                }
+              },
+              {
+                "id": "rainy",
+                "label": {
+                  "en": "rainy"
+                }
+              }
+            ]
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "placeholder": {
+              "en": "which weather station"
+            },
+            "filter": "driver_id=weather_station"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "number",
+            "name": "temperature",
+            "title": {
+              "en": "temperature"
+            },
+            "example": {
+              "en": "token number for downstream Flow cards"
+            }
+          }
+        ],
+        "id": "weather-changed"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "It !{{is|isn't}} raining"
+        },
+        "hint": {
+          "en": "Checks whether the weather station's mode is rainy."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=weather_station"
+          }
+        ],
+        "id": "is-it-raining"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Set weather mode"
+        },
+        "hint": {
+          "en": "Writes the mode capability on the selected device"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=weather_station"
+          },
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "title": {
+              "en": "Mode"
+            },
+            "values": [
+              {
+                "id": "sunny",
+                "label": {
+                  "en": "Sunny"
+                }
+              },
+              {
+                "id": "cloudy",
+                "label": {
+                  "en": "Cloudy"
+                }
+              },
+              {
+                "id": "rainy",
+                "label": {
+                  "en": "Rainy"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set-weather-mode"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Weather Station"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_humidity",
+        "measure_pressure",
+        "measure_temperature",
+        "mode"
+      ],
+      "platforms": [
+        "cloud"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png",
+        "xlarge": "/drivers/weather_station/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "weather_station"
+    }
+  ],
+  "capabilities": {
+    "mode": {
+      "type": "enum",
+      "title": {
+        "en": "Weather Mode"
+      },
+      "values": [
+        {
+          "id": "sunny",
+          "title": {
+            "en": "Sunny"
+          }
+        },
+        {
+          "id": "cloudy",
+          "title": {
+            "en": "Cloudy"
+          }
+        },
+        {
+          "id": "rainy",
+          "title": {
+            "en": "Rainy"
+          }
+        }
+      ],
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": true
+    }
+  }
+}
