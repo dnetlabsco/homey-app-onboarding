@@ -1,0 +1,31 @@
+{  
+  "brandColor": "#4A90E2",
+  "id": "com.osman.weatherbuddy",
+  "version": "1.0.0",
+  "compatibility": ">=13.0.0",
+  "sdk": 3,
+  "runtime": "python",
+  "pythonVersion": "3.14",
+  "platforms": [
+    "cloud"
+  ],
+  "name": {
+    "en": "Weather Buddy"
+  },
+  "description": {
+    "en": "Adds support for MyBrand devices."
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Osman Allahverdi",
+    "email": "osmanallahverdi@athom.nl"
+  }
+}

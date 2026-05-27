@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "weather changed"
+  },
+  "args": [
+    {
+      "type": "dropdown",
+      "name": "mode",
+      "values": [
+        { "id": "sunny",  "label": { "en": "sunny" } },
+        { "id": "cloudy", "label": { "en": "cloudy" } },
+        { "id": "rainy",  "label": { "en": "rainy" } }
+      ]
+    },
+    {
+      "type": "device",
+      "name": "device",
+      "placeholder": {
+        "en": "which weather station"
+      },
+      "filter": "driver_id=weather_station"
+    }
+  ],
+  "tokens": [
+    {
+      "type": "number",
+      "name": "temperature",
+      "title": {
+        "en": "temperature"
+      },
+      "example": {
+        "en": "token number for downstream Flow cards"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": { "en": "It !{{is|isn't}} raining" },
+  "hint": { "en": "Checks whether the weather station's mode is rainy." },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=weather_station"
+    }
+  ]
+}

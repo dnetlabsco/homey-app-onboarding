@@ -1,0 +1,22 @@
+{
+
+  "title": { "en": "Set weather mode" },
+  "hint": { "en": "Writes the mode capability on the selected device" },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=weather_station"
+    },
+    {
+      "type": "dropdown",
+      "name": "mode",
+      "title": { "en": "Mode" },
+      "values": [
+        { "id": "sunny",  "label": { "en": "Sunny" } },
+        { "id": "cloudy", "label": { "en": "Cloudy" } },
+        { "id": "rainy",  "label": { "en": "Rainy" } }
+      ]
+    }
+  ]
+}

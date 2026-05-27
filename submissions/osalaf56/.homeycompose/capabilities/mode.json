@@ -1,0 +1,14 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Weather Mode"
+  },
+  "values": [
+    { "id": "sunny",  "title": { "en": "Sunny" } },
+    { "id": "cloudy", "title": { "en": "Cloudy" } },
+    { "id": "rainy",  "title": { "en": "Rainy" } }
+  ],
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": true
+}
