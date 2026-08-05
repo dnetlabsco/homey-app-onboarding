@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script
+        type="text/javascript"
+        src="/homey.js"
+        data-origin="settings">
+    </script>
+
+    <title>Settings</title>
+</head>
+
+<body>
+
+<h2>Weather App Settings</h2>
+
+<label>
+    <input type="checkbox" id="freeze">
+    Freeze values
+</label>
+
+<script>
+
+function onHomeyReady(Homey) {
+
+    Homey.ready();
+
+    Homey.get('freeze', function(err, value) {
+        document.getElementById("freeze").checked = value || false;
+    });
+
+    document.getElementById("freeze").addEventListener("change", function() {
+
+        Homey.set(
+            'freeze',
+            this.checked,
+            function(err) {
+                if(err) console.error(err);
+            }
+        );
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "It !{{is|isn't}} raining"
+  },
+  "hint": {
+    "en": "Returns true if it does/doesn't rain"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device", 
+      "filter" : "driver_id=weather_station"
+    }
+  ]
+}

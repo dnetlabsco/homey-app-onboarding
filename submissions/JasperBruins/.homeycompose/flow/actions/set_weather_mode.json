@@ -1,0 +1,38 @@
+{
+  "title": {
+    "en": "Sets weather mode on selected device"
+  },
+   "titleFormatted": "Set weather mode to [[mode]]",
+  "hint": {
+    "en": "Writes mode capability on selected device"
+  },
+  "args": [
+    {
+      "type": "dropdown",
+      "name": "mode",
+      "values": [ {
+          "id": "sunny",
+          "title": { 
+            "en": "Sunny",
+            "nl": "Zonnig"
+          }
+        },
+        {
+          "id": "rainy",
+          "title": { 
+            "en": "Rainy",
+            "nl": "Regen"
+          }
+        },
+        {
+          "id": "cloudy",
+          "title": { 
+            "en": "Cloudy",
+            "nl": "Bewolkt"
+          }
+        }
+        
+      ]
+    }
+  ]
+}

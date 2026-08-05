@@ -1,0 +1,40 @@
+{
+  "name": {
+    "en": "weather_widget"
+  },
+  "height": 188,
+  "settings": [{
+  "id": "unit",
+  "type": "dropdown",
+  "title": {
+    "en": "Dropdown",
+    "nl": "Dropdown"
+  },
+  "value": "Units",
+  "values": [
+    {
+      "id": "Fahrenheit",
+      "title": {
+        "en": "Fahrenheit"
+      }
+    },
+    {
+      "id": "Celsius",
+      "title": {
+        "en": "Celsius"
+      }
+    }
+  ]
+}],
+    "devices": {
+    "singular" : true,
+    "type": "app",
+    "filter": {"driver_id": "weather_station"}
+  },
+  "api": {
+  "get_state": {
+    "method": "GET",
+    "path": "/state"
+  }
+}
+}

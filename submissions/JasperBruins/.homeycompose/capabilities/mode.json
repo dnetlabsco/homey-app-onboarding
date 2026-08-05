@@ -1,0 +1,33 @@
+{
+ "type" : "enum",
+    "title": {"en": "Weather Mode",
+              "nl": "Weer Modus"
+            },
+            "getable": true,
+            "setable": false,
+            "id" : "mode",
+        "values": [
+        {
+          "id": "sunny",
+          "title": { 
+            "en": "Sunny",
+            "nl": "Zonnig"
+          }
+        },
+        {
+          "id": "rainy",
+          "title": { 
+            "en": "Rainy",
+            "nl": "Regen"
+          }
+        },
+        {
+          "id": "cloudy",
+          "title": { 
+            "en": "Cloudy",
+            "nl": "Bewolkt"
+          }
+        }
+      ]
+    }
+  
