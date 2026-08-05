@@ -1,0 +1,272 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.JasperBruins.weatherbuddy",
+  "version": "1.0.1",
+  "compatibility": ">=13.0.0",
+  "sdk": 3,
+  "brandColor": "#0F172A",
+  "runtime": "python",
+  "pythonVersion": "3.14",
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "com.JasperBruins.weatherbuddy"
+  },
+  "description": {
+    "en": "A virtual weather-station device"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Jasper Bruins",
+    "email": "jasperbruins2311@gmail.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "Triggers when weather changes to selected mode"
+        },
+        "titleFormatted": "Weather changed to [[mode]]",
+        "hint": {
+          "en": "Checks what weather mode it is and triggers when it changes to the selected mode"
+        },
+        "id": "weather_changed",
+        "args": [
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "values": [
+              {
+                "id": "sunny",
+                "title": {
+                  "en": "Sunny",
+                  "nl": "Zonnig"
+                }
+              },
+              {
+                "id": "rainy",
+                "title": {
+                  "en": "Rainy",
+                  "nl": "Regen"
+                }
+              },
+              {
+                "id": "cloudy",
+                "title": {
+                  "en": "Cloudy",
+                  "nl": "Bewolkt"
+                }
+              }
+            ]
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=weather_station"
+          }
+        ],
+        "tokens": [
+          {
+            "type": "number",
+            "name": "temperature",
+            "title": {
+              "en": "Temperature"
+            },
+            "example": {
+              "en": "A temperature so you can pipe it into downstream flow cards"
+            }
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "It !{{is|isn't}} raining"
+        },
+        "hint": {
+          "en": "Returns true if it does/doesn't rain"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=weather_station"
+          }
+        ],
+        "id": "is_it_raining"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Sets weather mode on selected device"
+        },
+        "titleFormatted": "Set weather mode to [[mode]]",
+        "hint": {
+          "en": "Writes mode capability on selected device"
+        },
+        "args": [
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "values": [
+              {
+                "id": "sunny",
+                "title": {
+                  "en": "Sunny",
+                  "nl": "Zonnig"
+                }
+              },
+              {
+                "id": "rainy",
+                "title": {
+                  "en": "Rainy",
+                  "nl": "Regen"
+                }
+              },
+              {
+                "id": "cloudy",
+                "title": {
+                  "en": "Cloudy",
+                  "nl": "Bewolkt"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set_weather_mode"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "weather_station"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_humidity",
+        "measure_pressure",
+        "measure_temperature",
+        "mode"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/weather_station/assets/images/small.png",
+        "large": "/drivers/weather_station/assets/images/large.png",
+        "xlarge": "/drivers/weather_station/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "weather_station"
+    }
+  ],
+  "widgets": {
+    "weather_widget": {
+      "name": {
+        "en": "weather_widget"
+      },
+      "height": 188,
+      "settings": [
+        {
+          "id": "unit",
+          "type": "dropdown",
+          "title": {
+            "en": "Dropdown",
+            "nl": "Dropdown"
+          },
+          "value": "Units",
+          "values": [
+            {
+              "id": "Fahrenheit",
+              "title": {
+                "en": "Fahrenheit"
+              }
+            },
+            {
+              "id": "Celsius",
+              "title": {
+                "en": "Celsius"
+              }
+            }
+          ]
+        }
+      ],
+      "devices": {
+        "singular": true,
+        "type": "app",
+        "filter": {
+          "driver_id": "weather_station"
+        }
+      },
+      "api": {
+        "get_state": {
+          "method": "GET",
+          "path": "/state"
+        }
+      },
+      "id": "weather_widget"
+    }
+  },
+  "capabilities": {
+    "mode": {
+      "type": "enum",
+      "title": {
+        "en": "Weather Mode",
+        "nl": "Weer Modus"
+      },
+      "getable": true,
+      "setable": false,
+      "id": "mode",
+      "values": [
+        {
+          "id": "sunny",
+          "title": {
+            "en": "Sunny",
+            "nl": "Zonnig"
+          }
+        },
+        {
+          "id": "rainy",
+          "title": {
+            "en": "Rainy",
+            "nl": "Regen"
+          }
+        },
+        {
+          "id": "cloudy",
+          "title": {
+            "en": "Cloudy",
+            "nl": "Bewolkt"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "title": {
+    "en": "Triggers when weather changes to selected mode"
+  },
+  "titleFormatted" : "Weather changed to [[mode]]",
+  "hint": {
+    "en": "Checks what weather mode it is and triggers when it changes to the selected mode"
+  },
+  "id" : "weather_changed",
+  "args": [
+    {
+      "type": "dropdown",
+      "name": "mode",
+      "values": [{
+          "id": "sunny",
+          "title": { 
+            "en": "Sunny",
+            "nl": "Zonnig"
+          }
+        },
+        {
+          "id": "rainy",
+          "title": { 
+            "en": "Rainy",
+            "nl": "Regen"
+          }
+        },
+        {
+          "id": "cloudy",
+          "title": { 
+            "en": "Cloudy",
+            "nl": "Bewolkt"
+          }
+        }
+        
+      ]
+    },
+    {
+      "type": "device",
+      "name": "device", 
+      "filter" : "driver_id=weather_station"
+    }
+  ],
+  "tokens": [
+    {
+      "type": "number",
+      "name": "temperature",
+      "title": {
+        "en": "Temperature"
+      },
+      "example": {
+        "en": "A temperature so you can pipe it into downstream flow cards"
+      }
+    }
+  ]
+}

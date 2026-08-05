@@ -1,0 +1,32 @@
+{
+  "id": "com.JasperBruins.weatherbuddy",
+  "version": "1.0.1",
+  "compatibility": ">=13.0.0",
+  "sdk": 3,
+  "brandColor": "#0F172A",
+  "runtime": "python",
+  "pythonVersion": "3.14",
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "com.JasperBruins.weatherbuddy"
+  },
+  "description": {
+    "en": "A virtual weather-station device"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Jasper Bruins",
+    "email": "jasperbruins2311@gmail.com"
+  }
+}

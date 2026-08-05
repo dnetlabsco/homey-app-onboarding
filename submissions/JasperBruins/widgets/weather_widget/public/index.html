@@ -1,0 +1,202 @@
+<html>
+<head>
+
+<style>
+
+.weather-widget {
+    padding: var(--homey-su-4);
+}
+
+
+.temperature {
+    font-size: var(--homey-font-size-xlarge);
+    font-weight: bold;
+    text-align: center;
+    color: var(--homey-color-text);
+}
+
+
+.info-row {
+    display:flex;
+    justify-content:space-around;
+    margin-top:var(--homey-su-3);
+}
+
+
+.info {
+    text-align:center;
+    color:var(--homey-color-text);
+}
+
+
+.label {
+    color:var(--homey-color-mono-500);
+}
+
+
+.mode {
+    text-align:center;
+    font-size:40px;
+    margin-top:var(--homey-su-3);
+}
+
+
+</style>
+
+</head>
+
+
+<body class="homey-widget">
+
+<div class="weather-widget">
+
+
+    <div class="temperature" id="temperature">
+        -- °C
+    </div>
+
+
+    <div class="info-row">
+
+
+        <div class="info">
+
+            <div class="label">
+                Humidity
+            </div>
+
+            <div id="humidity">
+                --
+            </div>
+
+        </div>
+
+
+
+        <div class="info">
+
+            <div class="label">
+                Pressure
+            </div>
+
+            <div id="pressure">
+                --
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="mode" id="mode">
+        ☀️
+    </div>
+
+</div>
+
+<script>
+
+
+let settings;
+
+function updateWeather(Homey){
+
+
+    Homey.api(
+        "GET",
+        "/state",
+        {
+            device: settings.device
+        }
+
+    )
+
+    .then(result => {
+
+
+        let temperature=result.temperature;
+
+
+        if(settings.unit==="fahrenheit"){
+
+            temperature =
+            temperature * 9/5 + 32;
+
+            document.getElementById(
+                "temperature"
+            ).innerHTML =
+            temperature.toFixed(1)+" °F";
+
+        }
+
+        else {
+
+            document.getElementById(
+                "temperature"
+            ).innerHTML =
+            temperature.toFixed(1)+" °C";
+
+        }
+
+
+
+        document.getElementById(
+            "humidity"
+        ).innerHTML =
+        result.humidity+" %";
+
+
+
+        document.getElementById(
+            "pressure"
+        ).innerHTML =
+        result.pressure+" hPa";
+
+
+
+        let emoji="☀️";
+
+
+        if(result.mode==="cloudy")
+            emoji="☁️";
+
+
+        if(result.mode==="rainy")
+            emoji="🌧️";
+
+
+        document.getElementById(
+            "mode"
+        ).innerHTML=emoji;
+
+
+    })
+
+    .catch(console.error);
+
+}
+
+function onHomeyReady(Homey){
+
+
+    settings=Homey.getSettings();
+
+
+    Homey.ready();
+
+
+    updateWeather(Homey);
+
+
+    setInterval(
+        ()=>updateWeather(Homey),
+        10000
+    );
+
+}
+
+</script>
+
+</body>
+</html>
